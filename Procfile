@@ -1,1 +1,1 @@
-web: ./VoiceCraft.Server.exe
+web: dotnet VoiceCraft.Server.dll
