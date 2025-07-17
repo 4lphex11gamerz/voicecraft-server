@@ -1,15 +1,15 @@
-# Use official .NET runtime for Linux
 FROM mcr.microsoft.com/dotnet/runtime:7.0
 
-# Create app directory
 WORKDIR /app
 
-# Copy all files into the container
+# Copy everything into the container
 COPY . .
 
-# Expose the UDP port used by VoiceCraft
+# Fix permission for any executable if needed
+RUN chmod +x ./VoiceCraft.Server.dll || true
+
+# Expose the proximity chat UDP port
 EXPOSE 24454/udp
 
-# (No need to chmod .dll — dotnet handles it)
-# Start the server
+# Run with dotnet (safe for Linux)
 ENTRYPOINT ["dotnet", "VoiceCraft.Server.dll"]
