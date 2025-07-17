@@ -1,0 +1,1 @@
+web: ./VoiceCraft.Server.exe
